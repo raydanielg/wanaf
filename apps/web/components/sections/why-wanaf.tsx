@@ -1,3 +1,5 @@
+import { RevealOnScroll } from "@/components/reveal-on-scroll"
+
 const reasons = [
   {
     title: "Two Regions. One Team.",
@@ -35,26 +37,29 @@ export function WhyWanaf() {
   return (
     <section className="bg-dhow-ink py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 max-w-2xl">
-          <span className="text-xs font-medium uppercase tracking-[0.2em] text-monsoon-teal">
-            Difference
-          </span>
-          <h2 className="mt-6 text-3xl font-semibold tracking-tight text-sandstone text-balance sm:text-4xl lg:text-5xl">
-            Why organisations choose WANAF
-          </h2>
-        </div>
+        <RevealOnScroll>
+          <div className="mb-16 max-w-2xl">
+            <span className="text-xs font-medium uppercase tracking-[0.2em] text-monsoon-teal">
+              Difference
+            </span>
+            <h2 className="mt-6 text-3xl font-semibold tracking-tight text-sandstone text-balance sm:text-4xl lg:text-5xl">
+              Why organisations choose WANAF
+            </h2>
+          </div>
+        </RevealOnScroll>
 
         <div className="grid gap-px overflow-hidden rounded-xl border border-sandstone/8 bg-sandstone/8 sm:grid-cols-2 lg:grid-cols-3">
-          {reasons.map((reason) => (
-            <div
-              key={reason.title}
-              className="flex flex-col gap-3 bg-dhow-ink p-8"
-            >
-              <h3 className="text-lg font-semibold text-sandstone">
-                {reason.title}
-              </h3>
-              <p className="text-sm text-sandstone/50">{reason.description}</p>
-            </div>
+          {reasons.map((reason, idx) => (
+            <RevealOnScroll key={reason.title} delay={idx * 70}>
+              <div
+                className="flex h-full flex-col gap-3 bg-dhow-ink p-8 transition-colors duration-300 hover:bg-sandstone/[0.03]"
+              >
+                <h3 className="text-lg font-semibold text-sandstone">
+                  {reason.title}
+                </h3>
+                <p className="text-sm text-sandstone/50">{reason.description}</p>
+              </div>
+            </RevealOnScroll>
           ))}
         </div>
       </div>

@@ -149,7 +149,7 @@ export default function HowWeWorkPage() {
             </div>
 
             <div className="mt-12 flex justify-center">
-              <Button size="lg" render={<Link href="/contact" />}>
+              <Button size="lg" nativeButton={false} render={<Link href="/contact" />}>
                 Request a Consultation
                 <IconArrowRight data-icon="inline-end" className="size-4" />
               </Button>

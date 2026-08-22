@@ -305,7 +305,7 @@ export default async function ServiceDetailPage({
                 <IconArrowLeft className="size-4" />
                 All services
               </Link>
-              <Button render={<Link href="/contact" />}>
+              <Button nativeButton={false} render={<Link href="/contact" />}>
                 Request a Consultation
                 <IconArrowRight data-icon="inline-end" className="size-4" />
               </Button>

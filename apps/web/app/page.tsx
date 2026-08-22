@@ -1,3 +1,5 @@
+"use client"
+
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Hero } from "@/components/sections/hero"
@@ -12,8 +14,13 @@ import { Infrastructure } from "@/components/sections/infrastructure"
 import { HowWeWork } from "@/components/sections/how-we-work"
 import { Engagement } from "@/components/sections/engagement"
 import { WhyWanaf } from "@/components/sections/why-wanaf"
+import { PageSkeleton, usePageLoading } from "@/components/page-skeleton"
 
 export default function Page() {
+  const loading = usePageLoading(800)
+
+  if (loading) return <PageSkeleton />
+
   return (
     <div className="flex min-h-svh flex-col">
       <Header />

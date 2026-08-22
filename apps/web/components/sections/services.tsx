@@ -10,6 +10,7 @@ import {
   IconArrowRight,
 } from "@tabler/icons-react"
 import { Button } from "@workspace/ui/components/button"
+import { RevealOnScroll } from "@/components/reveal-on-scroll"
 
 const services = [
   {
@@ -67,41 +68,44 @@ export function Services() {
   return (
     <section id="services" className="bg-background py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 max-w-2xl">
-          <span className="text-xs font-medium uppercase tracking-[0.2em] text-monsoon-teal">
-            What we build
-          </span>
-          <h2 className="mt-6 text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
-            Core services
-          </h2>
-        </div>
+        <RevealOnScroll>
+          <div className="mb-16 max-w-2xl">
+            <span className="text-xs font-medium uppercase tracking-[0.2em] text-monsoon-teal">
+              What we build
+            </span>
+            <h2 className="mt-6 text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+              Core services
+            </h2>
+          </div>
+        </RevealOnScroll>
 
         <div className="grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <div
-              key={service.number}
-              className="group flex flex-col gap-4 bg-background p-8 transition-colors hover:bg-muted/30"
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex size-11 items-center justify-center rounded-lg bg-monsoon-teal/10">
-                  <service.icon className="size-5 text-monsoon-teal" />
+          {services.map((service, idx) => (
+            <RevealOnScroll key={service.number} delay={idx * 60} className="h-full">
+              <div
+                className="group flex h-full flex-col gap-4 bg-background p-8 transition-all duration-300 hover:bg-muted/30 hover:-translate-y-0.5"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex size-11 items-center justify-center rounded-lg bg-monsoon-teal/10 transition-transform duration-300 group-hover:scale-110">
+                    <service.icon className="size-5 text-monsoon-teal" />
+                  </div>
+                  <span className="text-sm font-medium text-muted-foreground/50">
+                    {service.number}
+                  </span>
                 </div>
-                <span className="text-sm font-medium text-muted-foreground/50">
-                  {service.number}
-                </span>
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-lg font-semibold">{service.title}</h3>
+                  <p className="text-sm text-muted-foreground">
+                    {service.description}
+                  </p>
+                </div>
               </div>
-              <div className="flex flex-col gap-2">
-                <h3 className="text-lg font-semibold">{service.title}</h3>
-                <p className="text-sm text-muted-foreground">
-                  {service.description}
-                </p>
-              </div>
-            </div>
+            </RevealOnScroll>
           ))}
         </div>
 
         <div className="mt-12 flex justify-center">
-          <Button size="lg" variant="outline" render={<Link href="/services" />}>
+          <Button size="lg" variant="outline" nativeButton={false} render={<Link href="/services" />}>
             View All Services
             <IconArrowRight data-icon="inline-end" className="size-4" />
           </Button>

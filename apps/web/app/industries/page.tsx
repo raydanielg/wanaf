@@ -17,6 +17,7 @@ import {
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { PageHero } from "@/components/sections/page-hero"
+import { RevealOnScroll } from "@/components/reveal-on-scroll"
 
 export const metadata: Metadata = {
   title: "Industries — WANAF Technologies",
@@ -123,24 +124,25 @@ export default function IndustriesPage() {
         <section className="bg-background py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {industries.map((ind) => (
-                <Link
-                  key={ind.slug}
-                  href={`/industries/${ind.slug}`}
-                  className="group flex flex-col gap-4 rounded-xl border border-border p-8 transition-all hover:border-monsoon-teal/30 hover:shadow-sm"
-                >
-                  <div className="flex size-12 items-center justify-center rounded-lg bg-monsoon-teal/10">
-                    <ind.icon className="size-6 text-monsoon-teal" />
-                  </div>
-                  <h3 className="text-lg font-semibold">{ind.title}</h3>
-                  <p className="text-sm text-muted-foreground">
-                    {ind.description}
-                  </p>
-                  <span className="mt-auto flex items-center gap-1.5 text-sm font-medium text-monsoon-teal">
-                    Learn more
-                    <IconArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                </Link>
+              {industries.map((ind, idx) => (
+                <RevealOnScroll key={ind.slug} delay={idx * 60}>
+                  <Link
+                    href={`/industries/${ind.slug}`}
+                    className="group flex h-full flex-col gap-4 rounded-xl border border-border p-8 transition-all duration-300 hover:-translate-y-1 hover:border-monsoon-teal/30 hover:shadow-lg hover:shadow-monsoon-teal/5"
+                  >
+                    <div className="flex size-12 items-center justify-center rounded-lg bg-monsoon-teal/10 transition-transform duration-300 group-hover:scale-110">
+                      <ind.icon className="size-6 text-monsoon-teal" />
+                    </div>
+                    <h3 className="text-lg font-semibold">{ind.title}</h3>
+                    <p className="text-sm text-muted-foreground">
+                      {ind.description}
+                    </p>
+                    <span className="mt-auto flex items-center gap-1.5 text-sm font-medium text-monsoon-teal">
+                      Learn more
+                      <IconArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                  </Link>
+                </RevealOnScroll>
               ))}
             </div>
           </div>

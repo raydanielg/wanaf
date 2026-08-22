@@ -2,23 +2,17 @@ import Link from "next/link"
 import { IconArrowRight } from "@tabler/icons-react"
 import { Button } from "@workspace/ui/components/button"
 import { TextRotator } from "@/components/text-rotator"
+import { NetworkBackground } from "@/components/network-background"
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-background">
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-monsoon-teal/[0.04] via-transparent to-transparent" />
-        <div
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(11,44,51,1) 1px, transparent 1px), linear-gradient(90deg, rgba(11,44,51,1) 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
-          }}
-        />
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-monsoon-teal/[0.03] via-transparent to-transparent" />
+        <NetworkBackground />
       </div>
 
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-28">
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-12 px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-28">
         <div className="flex flex-col gap-8 animate-[fade-in_0.8s_ease-out]">
           <div className="flex flex-col items-center gap-6">
             <span className="text-xs font-medium uppercase tracking-[0.2em] text-monsoon-teal animate-[fade-in_0.6s_ease-out]">
@@ -40,6 +34,7 @@ export function Hero() {
             <Button
               size="lg"
               variant="default"
+              nativeButton={false}
               className="transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
               render={<Link href="/contact" />}
             >

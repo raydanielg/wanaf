@@ -34,21 +34,22 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground"
+              className="group relative text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground"
             >
               {link.label}
+              <span className="absolute -bottom-1 left-0 h-px w-0 bg-monsoon-teal transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-3 lg:flex">
           <Link
             href="/contact"
             className="text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground"
           >
             Contact Us
           </Link>
-          <Button size="sm" render={<Link href="/contact" />}>
+          <Button size="sm" nativeButton={false} className="transition-transform duration-300 hover:scale-105" render={<Link href="/contact" />}>
             Request a Consultation
             <IconArrowRight data-icon="inline-end" className="size-3.5" />
           </Button>
