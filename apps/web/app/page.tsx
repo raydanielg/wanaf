@@ -1,19 +1,37 @@
-import { Button } from "@workspace/ui/components/button"
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
+import { Hero } from "@/components/sections/hero"
+import { TrustStrip } from "@/components/sections/trust-strip"
+import { WhoWeAre } from "@/components/sections/who-we-are"
+import { GulfAfrica } from "@/components/sections/gulf-africa"
+import { Services } from "@/components/sections/services"
+import { AISection } from "@/components/sections/ai-section"
+import { AIUseCases } from "@/components/sections/ai-use-cases"
+import { Industries } from "@/components/sections/industries"
+import { Infrastructure } from "@/components/sections/infrastructure"
+import { HowWeWork } from "@/components/sections/how-we-work"
+import { Engagement } from "@/components/sections/engagement"
+import { WhyWanaf } from "@/components/sections/why-wanaf"
 
 export default function Page() {
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <div className="text-muted-foreground font-mono text-xs">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
-      </div>
+    <div className="flex min-h-svh flex-col">
+      <Header />
+      <main className="flex-1">
+        <Hero />
+        <TrustStrip />
+        <WhoWeAre />
+        <GulfAfrica />
+        <Services />
+        <AISection />
+        <AIUseCases />
+        <Industries />
+        <Infrastructure />
+        <HowWeWork />
+        <Engagement />
+        <WhyWanaf />
+      </main>
+      <Footer />
     </div>
   )
 }
