@@ -8,6 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@workspace/ui/components/dropdown-menu"
 import { Logo } from "@/components/logo"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 const navLinks = [
   { label: "About", href: "/about" },
@@ -43,6 +44,7 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
+          <ThemeToggle />
           <Link
             href="/contact"
             className="text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground"
@@ -55,7 +57,8 @@ export function Header() {
           </Button>
         </div>
 
-        <div className="lg:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
+          <ThemeToggle />
           <DropdownMenu>
             <DropdownMenuTrigger
               render={

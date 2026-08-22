@@ -113,9 +113,14 @@ export function Footer() {
                 the Gulf and Africa.
               </p>
               <div className="flex flex-col gap-2.5 text-sm text-sandstone/50">
-                <span className="flex items-center gap-2">
-                  <IconMapPin className="size-4 shrink-0 text-monsoon-teal" />
-                  Dubai, United Arab Emirates
+                <span className="flex flex-col gap-0.5">
+                  <span className="flex items-center gap-2">
+                    <IconMapPin className="size-4 shrink-0 text-monsoon-teal" />
+                    WANAF Technologies L.L.C
+                  </span>
+                  <span className="pl-6 text-xs text-sandstone/40">
+                    RSP 2 – F01, Office F01-01A<br />Nad Al Hamar, Dubai, UAE
+                  </span>
                 </span>
                 <span className="flex items-center gap-2">
                   <IconMapPin className="size-4 shrink-0 text-brass" />
@@ -125,9 +130,9 @@ export function Footer() {
                   <IconMail className="size-4 shrink-0 text-monsoon-teal" />
                   info@wanaf.tech
                 </a>
-                <a href="tel:+9710000000" className="flex items-center gap-2 transition-colors hover:text-sandstone">
+                <a href="tel:+971502169323" className="flex items-center gap-2 transition-colors hover:text-sandstone">
                   <IconPhone className="size-4 shrink-0 text-monsoon-teal" />
-                  +971 0 000 0000
+                  +971 50 216 9323
                 </a>
               </div>
 
