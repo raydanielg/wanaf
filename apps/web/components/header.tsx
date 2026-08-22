@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import { IconMenu2, IconArrowRight } from "@tabler/icons-react"
 import { Button } from "@workspace/ui/components/button"
@@ -9,17 +11,21 @@ import {
 } from "@workspace/ui/components/dropdown-menu"
 import { Logo } from "@/components/logo"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { LanguageToggle } from "@/components/language-toggle"
+import { useLanguage } from "@/components/language-provider"
+import type { TranslationKey } from "@/lib/translations"
 
-const navLinks = [
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Industries", href: "/industries" },
-  { label: "How We Work", href: "/how-we-work" },
-  { label: "Markets", href: "/markets" },
-  { label: "Insights", href: "/insights" },
+const navLinks: { label: TranslationKey; href: string }[] = [
+  { label: "nav_about", href: "/about" },
+  { label: "nav_services", href: "/services" },
+  { label: "nav_industries", href: "/industries" },
+  { label: "nav_how_we_work", href: "/how-we-work" },
+  { label: "nav_markets", href: "/markets" },
+  { label: "nav_insights", href: "/insights" },
 ]
 
 export function Header() {
+  const { t } = useLanguage()
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/95 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
@@ -37,27 +43,29 @@ export function Header() {
               href={link.href}
               className="group relative text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground"
             >
-              {link.label}
+              {t(link.label)}
               <span className="absolute -bottom-1 left-0 h-px w-0 bg-monsoon-teal transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
+          <LanguageToggle />
           <ThemeToggle />
           <Link
             href="/contact"
             className="text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground"
           >
-            Contact Us
+            {t("nav_contact")}
           </Link>
           <Button size="sm" nativeButton={false} className="transition-transform duration-300 hover:scale-105" render={<Link href="/contact" />}>
-            Request a Consultation
+            {t("nav_consultation")}
             <IconArrowRight data-icon="inline-end" className="size-3.5" />
           </Button>
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
+          <LanguageToggle />
           <ThemeToggle />
           <DropdownMenu>
             <DropdownMenuTrigger
@@ -73,14 +81,14 @@ export function Header() {
                   key={link.href}
                   render={<Link href={link.href} />}
                 >
-                  {link.label}
+                  {t(link.label)}
                 </DropdownMenuItem>
               ))}
               <DropdownMenuItem render={<Link href="/contact" />}>
-                Contact Us
+                {t("nav_contact")}
               </DropdownMenuItem>
               <DropdownMenuItem render={<Link href="/contact" />}>
-                Request a Consultation
+                {t("nav_consultation")}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

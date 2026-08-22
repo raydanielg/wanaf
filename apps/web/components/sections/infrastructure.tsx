@@ -1,3 +1,5 @@
+"use client"
+
 import {
   IconBrain,
   IconDatabase,
@@ -6,11 +8,13 @@ import {
   IconCloud,
 } from "@tabler/icons-react"
 import { RevealOnScroll } from "@/components/reveal-on-scroll"
+import { useLanguage } from "@/components/language-provider"
+import type { TranslationKey } from "@/lib/translations"
 
-const midLayer = [
-  { icon: IconDatabase, label: "Data" },
-  { icon: IconCode, label: "Software" },
-  { icon: IconShieldCheck, label: "Security" },
+const midLayer: { icon: typeof IconDatabase; labelKey: TranslationKey }[] = [
+  { icon: IconDatabase, labelKey: "s2_title" },
+  { icon: IconCode, labelKey: "s3_title" },
+  { icon: IconShieldCheck, labelKey: "s5_title" },
 ]
 
 function FlowLine({ delay = 0 }: { delay?: number }) {
@@ -28,6 +32,7 @@ function FlowLine({ delay = 0 }: { delay?: number }) {
 }
 
 export function Infrastructure() {
+  const { t } = useLanguage()
   return (
     <section className="relative overflow-hidden bg-dhow-ink py-20 lg:py-28">
       {/* Ambient glow background */}
@@ -54,10 +59,10 @@ export function Infrastructure() {
         <RevealOnScroll>
           <div className="mx-auto mb-16 max-w-3xl text-center">
             <span className="text-xs font-medium uppercase tracking-[0.2em] text-monsoon-teal">
-              Foundation
+              {t("infra_label")}
             </span>
             <h2 className="mt-6 text-3xl font-semibold tracking-tight text-sandstone text-balance sm:text-4xl lg:text-5xl">
-              AI is only as strong as the infrastructure beneath it.
+              {t("infra_title")}
             </h2>
           </div>
         </RevealOnScroll>
@@ -69,7 +74,7 @@ export function Infrastructure() {
               {/* AI - top layer */}
               <div className="group relative flex items-center gap-3 rounded-xl border border-monsoon-teal/40 bg-monsoon-teal/10 px-10 py-5 shadow-[0_0_40px_-12px_rgba(30,127,118,0.5)] transition-all duration-300 hover:scale-105 hover:bg-monsoon-teal/15">
                 <IconBrain className="size-6 text-monsoon-teal" />
-                <span className="text-xl font-semibold text-monsoon-teal">AI</span>
+                <span className="text-xl font-semibold text-monsoon-teal">{t("infra_ai")}</span>
               </div>
 
               <FlowLine delay={0} />
@@ -77,11 +82,11 @@ export function Infrastructure() {
               {/* Mid layer: Data / Software / Security */}
               <div className="grid w-full grid-cols-3 gap-4">
                 {midLayer.map((item, idx) => (
-                  <div key={item.label} className="flex flex-col items-center gap-3">
+                  <div key={item.labelKey} className="flex flex-col items-center gap-3">
                     <div className="flex w-full flex-col items-center gap-2 rounded-xl border border-sandstone/10 bg-sandstone/[0.03] px-4 py-4 text-center transition-all duration-300 hover:-translate-y-1 hover:border-monsoon-teal/25 hover:bg-sandstone/[0.06]">
                       <item.icon className="size-5 text-sandstone/70" />
                       <span className="text-sm font-medium text-sandstone/80">
-                        {item.label}
+                        {t(item.labelKey)}
                       </span>
                     </div>
                     <FlowLine delay={idx * 250} />
@@ -93,15 +98,13 @@ export function Infrastructure() {
               <div className="group relative flex items-center gap-3 rounded-xl border border-brass/40 bg-brass/10 px-10 py-5 shadow-[0_0_40px_-12px_rgba(201,153,46,0.4)] transition-all duration-300 hover:scale-105 hover:bg-brass/15">
                 <IconCloud className="size-5 text-brass" />
                 <span className="text-sm font-semibold text-brass">
-                  Cloud &amp; Infrastructure
+                  {t("infra_cloud")}
                 </span>
               </div>
             </div>
 
             <p className="mt-14 text-center text-base text-sandstone/50 text-pretty">
-              From cloud architecture and data engineering to cybersecurity and
-              enterprise applications, WANAF delivers the technology foundation
-              required to run AI reliably.
+              {t("infra_subtitle")}
             </p>
           </div>
         </RevealOnScroll>

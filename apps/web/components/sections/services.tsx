@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import {
   IconBrain,
@@ -11,70 +13,31 @@ import {
 } from "@tabler/icons-react"
 import { Button } from "@workspace/ui/components/button"
 import { RevealOnScroll } from "@/components/reveal-on-scroll"
+import { useLanguage } from "@/components/language-provider"
+import type { TranslationKey } from "@/lib/translations"
 
-const services = [
-  {
-    number: "01",
-    icon: IconBrain,
-    title: "Artificial Intelligence",
-    description:
-      "AI strategy, GenAI, machine learning, computer vision and AI governance.",
-  },
-  {
-    number: "02",
-    icon: IconDatabase,
-    title: "Data & Analytics",
-    description:
-      "Data platforms, warehouses, pipelines, BI and operational analytics.",
-  },
-  {
-    number: "03",
-    icon: IconCode,
-    title: "Software Engineering",
-    description:
-      "Web, mobile, enterprise applications and system integrations.",
-  },
-  {
-    number: "04",
-    icon: IconCloud,
-    title: "Cloud & Infrastructure",
-    description:
-      "Cloud architecture, DevOps, private/hybrid infrastructure and managed hosting.",
-  },
-  {
-    number: "05",
-    icon: IconShieldCheck,
-    title: "Cybersecurity",
-    description:
-      "Security assessments, IAM, monitoring, incident response and compliance.",
-  },
-  {
-    number: "06",
-    icon: IconBuildingCog,
-    title: "Enterprise Technology",
-    description:
-      "ERP, CRM, workflow, document management, payments and telecom integrations.",
-  },
-  {
-    number: "07",
-    icon: IconServer,
-    title: "Managed IT",
-    description:
-      "Service desk, infrastructure management, licensing and technology support.",
-  },
+const services: { number: string; icon: typeof IconBrain; titleKey: TranslationKey; descKey: TranslationKey }[] = [
+  { number: "01", icon: IconBrain, titleKey: "s1_title", descKey: "s1_desc" },
+  { number: "02", icon: IconDatabase, titleKey: "s2_title", descKey: "s2_desc" },
+  { number: "03", icon: IconCode, titleKey: "s3_title", descKey: "s3_desc" },
+  { number: "04", icon: IconCloud, titleKey: "s4_title", descKey: "s4_desc" },
+  { number: "05", icon: IconShieldCheck, titleKey: "s5_title", descKey: "s5_desc" },
+  { number: "06", icon: IconBuildingCog, titleKey: "s6_title", descKey: "s6_desc" },
+  { number: "07", icon: IconServer, titleKey: "s7_title", descKey: "s7_desc" },
 ]
 
 export function Services() {
+  const { t } = useLanguage()
   return (
     <section id="services" className="bg-background py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <RevealOnScroll>
           <div className="mb-16 max-w-2xl">
             <span className="text-xs font-medium uppercase tracking-[0.2em] text-monsoon-teal">
-              What we build
+              {t("services_label")}
             </span>
             <h2 className="mt-6 text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
-              Core services
+              {t("services_title")}
             </h2>
           </div>
         </RevealOnScroll>
@@ -94,9 +57,9 @@ export function Services() {
                   </span>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-lg font-semibold">{service.title}</h3>
+                  <h3 className="text-lg font-semibold">{t(service.titleKey)}</h3>
                   <p className="text-sm text-muted-foreground">
-                    {service.description}
+                    {t(service.descKey)}
                   </p>
                 </div>
               </div>
@@ -106,7 +69,7 @@ export function Services() {
 
         <div className="mt-12 flex justify-center">
           <Button size="lg" variant="outline" nativeButton={false} render={<Link href="/services" />}>
-            View All Services
+            {t("services_view_all")}
             <IconArrowRight data-icon="inline-end" className="size-4" />
           </Button>
         </div>

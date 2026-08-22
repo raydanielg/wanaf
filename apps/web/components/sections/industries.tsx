@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import {
   IconBuildingEstate,
@@ -7,6 +9,8 @@ import {
 } from "@tabler/icons-react"
 import { Button } from "@workspace/ui/components/button"
 import { RevealOnScroll } from "@/components/reveal-on-scroll"
+import { useLanguage } from "@/components/language-provider"
+import type { TranslationKey } from "@/lib/translations"
 
 const industries = [
   "Government & Public Sector",
@@ -22,31 +26,29 @@ const industries = [
   "Real Estate & Construction",
 ]
 
-const featured = [
+const featured: { icon: typeof IconBuildingEstate; titleKey: TranslationKey; descKey: TranslationKey; href: string }[] = [
   {
     icon: IconBuildingEstate,
-    title: "Government",
-    description:
-      "AI-powered public services, document processing and citizen experience.",
+    titleKey: "ind_gov_title",
+    descKey: "ind_gov_desc",
     href: "/industries/government",
   },
   {
     icon: IconBuildingBank,
-    title: "Banking & Fintech",
-    description:
-      "Fraud detection, credit scoring, KYC automation and intelligent customer operations.",
+    titleKey: "ind_bank_title",
+    descKey: "ind_bank_desc",
     href: "/industries/banking",
   },
   {
     icon: IconTruckDelivery,
-    title: "Logistics & Trade",
-    description:
-      "Route optimisation, customs automation, yard intelligence and shipment visibility.",
+    titleKey: "ind_log_title",
+    descKey: "ind_log_desc",
     href: "/industries/logistics",
   },
 ]
 
 export function Industries() {
+  const { t } = useLanguage()
   return (
     <section id="industries" className="bg-background py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -55,17 +57,17 @@ export function Industries() {
           <RevealOnScroll>
             <div className="mb-12 max-w-2xl">
               <span className="text-xs font-medium uppercase tracking-[0.2em] text-monsoon-teal">
-                Featured
+                {t("ind_label")}
               </span>
               <h2 className="mt-6 text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
-                Technology built for the way your industry works.
+                {t("ind_title")}
               </h2>
             </div>
           </RevealOnScroll>
 
           <div className="grid gap-6 lg:grid-cols-3">
             {featured.map((ind, idx) => (
-              <RevealOnScroll key={ind.title} delay={idx * 100}>
+              <RevealOnScroll key={ind.titleKey} delay={idx * 100}>
                 <Link
                   href={ind.href}
                   className="group flex h-full flex-col gap-4 rounded-xl border border-border p-8 transition-all duration-300 hover:-translate-y-1 hover:border-monsoon-teal/30 hover:shadow-lg hover:shadow-monsoon-teal/5"
@@ -73,10 +75,10 @@ export function Industries() {
                   <div className="flex size-12 items-center justify-center rounded-lg bg-monsoon-teal/10 transition-transform duration-300 group-hover:scale-110">
                     <ind.icon className="size-6 text-monsoon-teal" />
                   </div>
-                  <h3 className="text-xl font-semibold">{ind.title}</h3>
-                  <p className="text-sm text-muted-foreground">{ind.description}</p>
+                  <h3 className="text-xl font-semibold">{t(ind.titleKey)}</h3>
+                  <p className="text-sm text-muted-foreground">{t(ind.descKey)}</p>
                   <span className="mt-auto flex items-center gap-1.5 text-sm font-medium text-monsoon-teal">
-                    Learn more
+                    {t("ind_learn_more")}
                     <IconArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
                   </span>
                 </Link>
@@ -89,7 +91,7 @@ export function Industries() {
         <RevealOnScroll>
           <div className="border-t border-border pt-16">
             <h3 className="mb-8 text-sm font-medium uppercase tracking-wider text-muted-foreground">
-              All industries
+              {t("ind_all")}
             </h3>
             <div className="flex flex-wrap gap-3">
               {industries.map((ind) => (
@@ -105,7 +107,7 @@ export function Industries() {
 
             <div className="mt-10 flex justify-center">
               <Button size="lg" variant="outline" nativeButton={false} render={<Link href="/industries" />}>
-                Explore Industries
+                {t("ind_explore")}
                 <IconArrowRight data-icon="inline-end" className="size-4" />
               </Button>
             </div>

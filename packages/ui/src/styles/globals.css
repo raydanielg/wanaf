@@ -145,6 +145,12 @@
   button:not(:disabled), [role="button"]:not(:disabled) {
     cursor: pointer;
     }
+  [dir="rtl"] {
+    text-align: right;
+  }
+  [dir="rtl"] .lg\:flex-row {
+    flex-direction: row-reverse;
+  }
   @keyframes fade-in {
     from {
       opacity: 0;

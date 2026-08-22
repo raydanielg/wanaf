@@ -1,14 +1,19 @@
-import { RevealOnScroll } from "@/components/reveal-on-scroll"
+"use client"
 
-const capabilities = [
-  "AI & Data",
-  "Enterprise Software",
-  "Cloud Infrastructure",
-  "Cybersecurity",
-  "Managed IT",
+import { RevealOnScroll } from "@/components/reveal-on-scroll"
+import { useLanguage } from "@/components/language-provider"
+import type { TranslationKey } from "@/lib/translations"
+
+const capabilities: TranslationKey[] = [
+  "trust_ai_data",
+  "trust_enterprise",
+  "trust_cloud",
+  "trust_cyber",
+  "trust_managed",
 ]
 
 export function TrustStrip() {
+  const { t } = useLanguage()
   return (
     <section className="border-b border-border/40 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -20,13 +25,13 @@ export function TrustStrip() {
                   key={cap}
                   className="text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground"
                 >
-                  {cap}
+                  {t(cap)}
                 </span>
               ))}
             </div>
             <div className="flex items-center gap-2 text-sm font-medium text-foreground">
               <span className="size-1.5 animate-pulse rounded-full bg-monsoon-teal" />
-              Dubai · GCC · Africa
+              {t("trust_location")}
             </div>
           </div>
         </RevealOnScroll>
