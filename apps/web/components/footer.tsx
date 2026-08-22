@@ -7,6 +7,7 @@ import {
   IconBrandX,
   IconBrandInstagram,
   IconArrowUpRight,
+  IconChevronRight,
 } from "@tabler/icons-react"
 import { Logo } from "@/components/logo"
 import { RevealOnScroll } from "@/components/reveal-on-scroll"
@@ -152,20 +153,22 @@ export function Footer() {
             {footerSections.map((section, idx) => (
               <RevealOnScroll key={section.title} delay={idx * 80}>
                 <div className="flex flex-col gap-3">
-                  <h4 className="text-sm font-semibold text-sandstone">
+                  <h4 className="group relative text-sm font-semibold text-sandstone">
                     {section.title}
+                    <span className="absolute -bottom-1 left-0 h-px w-6 bg-monsoon-teal/60 transition-all duration-300 group-hover:w-full" />
                   </h4>
                   <ul className="flex flex-col gap-2.5">
                     {section.links.map((link) => (
                       <li key={link.label}>
                         <Link
                           href={link.href}
-                          className="group inline-flex items-center gap-1 text-sm text-sandstone/50 transition-colors duration-200 hover:text-sandstone"
+                          className="group flex items-center gap-0.5 text-sm text-sandstone/50 transition-colors duration-200 hover:text-sandstone"
                         >
                           <span className="relative">
                             {link.label}
                             <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-monsoon-teal transition-all duration-300 group-hover:w-full" />
                           </span>
+                          <IconChevronRight className="size-3.5 shrink-0 text-monsoon-teal opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
                         </Link>
                       </li>
                     ))}
