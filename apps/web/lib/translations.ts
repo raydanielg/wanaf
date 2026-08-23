@@ -103,6 +103,10 @@ export const translations = {
     ind_bank_desc: "Fraud detection, credit scoring, KYC automation and intelligent customer operations.",
     ind_log_title: "Logistics & Trade",
     ind_log_desc: "Route optimisation, customs automation, yard intelligence and shipment visibility.",
+    ind_energy_title: "Energy, Oil & Gas",
+    ind_telecom_title: "Telecommunications",
+    ind_agri_title: "Agriculture",
+    ind_health_title: "Healthcare",
 
     // Infrastructure
     infra_label: "Foundation",
@@ -278,6 +282,10 @@ export const translations = {
     ind_bank_desc: "كشف الاحتيال، تقييم الائتمان، أتمتة KYC وعمليات العملاء الذكية.",
     ind_log_title: "الخدمات اللوجستية والتجارة",
     ind_log_desc: "تحسين المسارات، أتمتة الجمارك، ذكاء الساحات ومراقبة الشحنات.",
+    ind_energy_title: "الطاقة والنفط والغاز",
+    ind_telecom_title: "الاتصالات",
+    ind_agri_title: "الزراعة",
+    ind_health_title: "الرعاية الصحية",
 
     // Infrastructure
     infra_label: "الأساس",

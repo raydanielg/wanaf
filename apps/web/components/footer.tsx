@@ -33,11 +33,11 @@ const footerSections: { titleKey: TranslationKey; links: { labelKey: Translation
     links: [
       { labelKey: "ind_gov_title", labelFallback: "Government", href: "/industries/government" },
       { labelKey: "ind_bank_title", labelFallback: "Banking", href: "/industries/banking" },
-      { labelKey: "ind_log_title", labelFallback: "Energy", href: "/industries/energy" },
+      { labelKey: "ind_energy_title", labelFallback: "Energy", href: "/industries/energy" },
       { labelKey: "ind_log_title", labelFallback: "Logistics", href: "/industries/logistics" },
-      { labelKey: "ind_log_title", labelFallback: "Telecom", href: "/industries/telecommunications" },
-      { labelKey: "ind_log_title", labelFallback: "Agriculture", href: "/industries/agriculture" },
-      { labelKey: "ind_log_title", labelFallback: "Healthcare", href: "/industries/healthcare" },
+      { labelKey: "ind_telecom_title", labelFallback: "Telecom", href: "/industries/telecommunications" },
+      { labelKey: "ind_agri_title", labelFallback: "Agriculture", href: "/industries/agriculture" },
+      { labelKey: "ind_health_title", labelFallback: "Healthcare", href: "/industries/healthcare" },
     ],
   },
   {
@@ -130,9 +130,9 @@ export function Footer() {
                   <IconMapPin className="size-4 shrink-0 text-brass" />
                   {t("footer_east_africa")}
                 </span>
-                <a href="mailto:info@wanaf.tech" className="flex items-center gap-2 transition-colors hover:text-sandstone">
+                <a href="mailto:info@wanaf.ae" className="flex items-center gap-2 transition-colors hover:text-sandstone">
                   <IconMail className="size-4 shrink-0 text-monsoon-teal" />
-                  info@wanaf.tech
+                  info@wanaf.ae
                 </a>
                 <a href="tel:+971502169323" className="flex items-center gap-2 transition-colors hover:text-sandstone">
                   <IconPhone className="size-4 shrink-0 text-monsoon-teal" />

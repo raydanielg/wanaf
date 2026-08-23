@@ -133,7 +133,7 @@ export default function ContactPage() {
             <div className="grid gap-6 sm:grid-cols-3">
               {[
                 { icon: IconMapPin, label: "Head Office", value: "WANAF Technologies L.L.C", sub: "RSP 2 – F01, Office F01-01A, Nad Al Hamar, Dubai, UAE", color: "text-monsoon-teal" },
-                { icon: IconMail, label: "Email", value: "info@wanaf.tech", sub: "We reply within 1 business day", color: "text-brass", href: "mailto:info@wanaf.tech" },
+                { icon: IconMail, label: "Email", value: "info@wanaf.ae", sub: "We reply within 1 business day", color: "text-brass", href: "mailto:info@wanaf.ae" },
                 { icon: IconPhone, label: "Telephone", value: "+971 50 216 9323", sub: "Sun–Thu, 9am–6pm GST", color: "text-monsoon-teal", href: "tel:+971502169323" },
               ].map((item, idx) => (
                 <RevealOnScroll key={item.label} delay={idx * 100}>
